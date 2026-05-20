@@ -260,6 +260,19 @@ window.TESTIMONIALS = [
       en: 'I have worked with many programs, but nothing impressed me like the sales program Engineer Mustafa built for us.',
       ar: 'أنا اشتغلت على برامج كتير، مفيش حاجة عجبتني قد ما عجبني برنامج المبيعات اللي عمله مهندس مصطفى.'
     }
+  },
+  {
+    id: 'ruben-ba',
+    featured: false,
+    projectId: null,
+    photo: null,
+    initials: { en: 'RB', ar: 'RB' },
+    name: { en: 'Ruben BA', ar: 'Ruben BA' },
+    role: { en: 'Client — United Kingdom, London', ar: 'عميل — المملكة المتحدة، لندن' },
+    text: {
+      en: 'Mostafa is a very kind professional who helped me to bright up my website front end. He is very responsive to messages and he accommodated my requests. I hope I can work with him in the future again.',
+      ar: 'مصطفى محترف لطيف جداً ساعدني في تحسين واجهة موقعي الأمامية. سريع في الرد على الرسائل واستجاب لطلباتي. أتمنى أتعاون معه مرة أخرى في المستقبل.'
+    }
   }
 ];
 
