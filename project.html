@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Details — Mustafa Hussein</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>tailwind.config={theme:{extend:{colors:{navy:'#050b14','navy-mid':'#0a1529',gold:'#c9a84c','gold-light':'#e4c26e'}}}}</script>
+<style>
+:root{--navy:#050b14;--navy-mid:#0a1529;--gold:#c9a84c;--gold-l:#e4c26e;--border:rgba(201,168,76,0.16);--muted:#7a8ba0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:#fff;font-family:'Cairo',sans-serif;overflow-x:hidden}
+html[dir=ltr] body{font-family:'Outfit',sans-serif}
+.gt{background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 2rem;background:rgba(5,11,20,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.lang-btn{background:rgba(201,168,76,.1);border:1px solid var(--border);border-radius:4px;padding:.35rem .8rem;color:var(--gold);font-size:.78rem;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-g,.btn-o{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:6px;font-weight:700;font-size:.8rem;text-decoration:none;transition:.25s}
+.btn-g{background:var(--gold);color:var(--navy)}.btn-g:hover{background:var(--gold-l)}
+.btn-o{border:1px solid var(--gold);color:var(--gold)}.btn-o:hover{background:rgba(201,168,76,.08)}
+.sec{padding:5rem 2rem 3rem;max-width:1100px;margin:0 auto}
+.ptag{display:inline-block;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);color:var(--gold);padding:.25rem .9rem;border-radius:100px;font-size:.72rem;font-weight:700}
+.spill{display:inline-flex;padding:.35rem .85rem;border-radius:100px;font-size:.75rem;border:1px solid rgba(201,168,76,.2);color:var(--gold-l);background:rgba(201,168,76,.05)}
+.hero-img{width:100%;max-height:420px;object-fit:cover;object-position:center top;border-radius:16px;border:1px solid var(--border)}
+.gallery img{width:100%;aspect-ratio:9/16;max-height:320px;object-fit:cover;object-position:center top;border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:.25s}
+.info-box{background:rgba(10,21,41,.6);border:1px solid var(--border);border-radius:12px;padding:1.2rem}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem}
+.gallery img:hover{border-color:var(--gold);transform:scale(1.02)}
+.feature-li{display:flex;gap:.75rem;padding:.65rem 0;border-bottom:1px solid rgba(201,168,76,.08);font-size:.9rem;color:#c8d4e0;line-height:1.7}
+.feature-li i{color:var(--gold);margin-top:.25rem;flex-shrink:0}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:2rem}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95%;max-height:85vh;border-radius:8px;object-fit:contain}
+.lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:var(--gold);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:var(--navy);font-size:1.1rem;z-index:2}
+html[dir=rtl] .lightbox-close{right:auto;left:1.5rem}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(201,168,76,.9);border:none;width:48px;height:48px;border-radius:50%;cursor:pointer;color:var(--navy);font-size:1.1rem;z-index:2;display:flex;align-items:center;justify-content:center}
+.lightbox-prev{left:1.5rem}.lightbox-next{right:1.5rem}
+html[dir=rtl] .lightbox-prev{left:auto;right:1.5rem}
+html[dir=rtl] .lightbox-next{right:auto;left:1.5rem}
+.lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:var(--gold-l);font-size:.85rem;font-weight:600;background:rgba(5,11,20,.75);padding:.35rem .9rem;border-radius:100px;border:1px solid var(--border);z-index:2}
+.not-found{text-align:center;padding:6rem 2rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="index.html" style="text-decoration:none;color:#fff;font-weight:800">MH <span style="color:var(--gold)">.</span></a>
+    <div class="flex items-center gap-4">
+      <a href="index.html#projects" class="btn-o" style="padding:.45rem 1rem;font-size:.72rem" data-en="All Projects" data-ar="كل المشاريع">All Projects</a>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">English</button>
+    </div>
+  </div>
+</nav>
+
+<main id="project-root" class="sec" style="padding-top:6rem"></main>
+
+<script src="js/projects-data.js"></script>
+<script src="js/portfolio-common.js"></script>
+<script>
+function getProjectIdFromUrl() {
+  const hash = (location.hash || '').replace(/^#/, '').trim();
+  if (hash) return hash;
+  return new URLSearchParams(location.search).get('id');
+}
+
+function renderProject() {
+  const id = getProjectIdFromUrl();
+  const root = document.getElementById('project-root');
+  const p = getProjectById(id);
+
+  if (!p) {
+    root.innerHTML = `
+      <div class="not-found">
+        <h1 style="font-size:2rem;margin-bottom:1rem" data-en="Project not found" data-ar="المشروع غير موجود">Project not found</h1>
+        <a href="index.html#projects" class="btn-g" data-en="Back to portfolio" data-ar="العودة للمعرض">Back to portfolio</a>
+      </div>`;
+    document.querySelectorAll('[data-en]').forEach(el => { if (el.dataset[lang]) el.textContent = el.dataset[lang]; });
+    return;
+  }
+
+  document.title = (lang === 'ar' ? p.title.ar : p.title.en) + ' — Mustafa Hussein';
+
+  const cover = p.cover ? encodeAssetPath(p.cover) : '';
+  const relatedTestimonial = (window.TESTIMONIALS || []).find(t => t.projectId === p.id && t.featured);
+
+  const galleryImages = p.images && p.images.length ? [...p.images] : [];
+  const galleryHtml = galleryImages.length
+    ? `<section style="margin-top:3rem">
+        <h2 style="font-size:1.25rem;font-weight:800;margin-bottom:1.2rem" data-en="Screenshots & Gallery" data-ar="لقطات الشاشة والمعرض">Screenshots & Gallery</h2>
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem" data-en="Click an image · use arrows to navigate" data-ar="اضغط على صورة · استخدم الأسهم للتنقل">Click an image · use arrows to navigate</p>
+        <div class="gallery" id="project-gallery">${galleryImages.map((src, i) =>
+          `<img src="${encodeAssetPath(src)}" alt="${t(p.title)} ${i + 1}" loading="lazy" data-index="${i}" class="gallery-img">`
+        ).join('')}</div>
+      </section>`
+    : '';
+
+  const featuresHtml = (p.features || []).map(f =>
+    `<li class="feature-li"><i class="fa fa-check-circle"></i><span>${t(f)}</span></li>`
+  ).join('');
+
+  const testimonialHtml = relatedTestimonial ? `
+    <section style="margin-top:3rem;background:rgba(201,168,76,.04);border:1px solid var(--border);border-radius:16px;padding:2rem">
+      <h2 style="font-size:1.1rem;font-weight:800;margin-bottom:1rem;color:var(--gold-l)" data-en="Client Review" data-ar="رأي العميل">Client Review</h2>
+      <p style="line-height:1.9;color:#c8d4e0;font-size:.95rem;margin-bottom:1.2rem">${t(relatedTestimonial.text)}</p>
+      <div style="display:flex;align-items:center;gap:1rem">
+        ${relatedTestimonial.photo ? `<img src="${encodeAssetPath(relatedTestimonial.photo)}" alt="" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)">` : ''}
+        <div>
+          <div style="font-weight:700">${t(relatedTestimonial.name)}</div>
+          <div style="font-size:.8rem;color:var(--muted)">${t(relatedTestimonial.role)}</div>
+        </div>
+      </div>
+    </section>` : '';
+
+  root.innerHTML = `
+    <a href="index.html#projects" style="color:var(--muted);font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1.5rem">
+      <i class="fa fa-arrow-right" style="color:var(--gold)"></i>
+      <span data-en="Back to projects" data-ar="العودة للمشاريع">Back to projects</span>
+    </a>
+    <div style="margin-bottom:1rem"><span class="ptag">${t(p.tag)}</span></div>
+    <h1 class="gt" style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:.35rem">${t(p.title)}</h1>
+    <p style="color:var(--muted);margin-bottom:1.5rem">${t(p.subtitle)}</p>
+    ${cover ? `<img class="hero-img gallery-hero" src="${cover}" alt="${t(p.title)}" style="cursor:pointer" title="${lang === 'ar' ? 'اضغط للمعرض' : 'Open gallery'}">` : ''}
+    <p style="margin-top:1.75rem;line-height:1.9;color:#c8d4e0;font-size:1rem">${t(p.summary)}</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-top:2rem">
+      <div class="info-box">
+        <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem" data-en="Challenge" data-ar="التحدي">Challenge</div>
+        <p style="font-size:.9rem;line-height:1.75">${t(p.challenge)}</p>
+      </div>
+      <div class="info-box" style="border-color:rgba(201,168,76,.35)">
+        <div style="font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem" data-en="Result" data-ar="النتيجة">Result</div>
+        <p style="font-size:.9rem;line-height:1.75;color:var(--gold-l)">${t(p.result)}</p>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem">
+      <div style="font-size:.75rem;color:var(--gold);font-weight:700;margin-bottom:.6rem" data-en="Technologies" data-ar="التقنيات">Technologies</div>
+      <div class="flex flex-wrap gap-2">${(p.tech || []).map(x => `<span class="spill">${x}</span>`).join('')}</div>
+    </div>
+
+    ${p.link ? `<div style="margin-top:1.5rem"><a href="${p.link}" target="_blank" rel="noopener" class="btn-g"><i class="fa fa-external-link-alt"></i> <span data-en="Visit Live Site" data-ar="زيارة الموقع">Visit Live Site</span></a></div>` : ''}
+
+    <section style="margin-top:2.5rem">
+      <h2 style="font-size:1.25rem;font-weight:800;margin-bottom:1rem" data-en="Key Features" data-ar="الميزات الرئيسية">Key Features</h2>
+      <ul style="list-style:none">${featuresHtml}</ul>
+    </section>
+
+    ${galleryHtml}
+    ${testimonialHtml}
+  `;
+
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if (el.dataset[lang]) el.textContent = el.dataset[lang];
+  });
+
+  const imgs = galleryImages;
+  document.querySelectorAll('.gallery-img').forEach((img) => {
+    img.addEventListener('click', () => {
+      openGallery(imgs, parseInt(img.dataset.index, 10) || 0, img.alt);
+    });
+  });
+  const hero = root.querySelector('.gallery-hero');
+  if (hero && imgs.length) {
+    hero.addEventListener('click', () => openGallery(imgs, 0, hero.alt));
+  }
+}
+
+renderProject();
+initNavScroll();
+window.addEventListener('hashchange', renderProject);
+
+function onLangChange() { renderProject(); }
+</script>
+</body>
+</html>

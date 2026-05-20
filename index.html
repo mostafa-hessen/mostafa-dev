@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mustafa Hussein — Full Stack Developer, ITI Instructor & Tech Consultant. Building digital systems that drive business growth.">
+<title>Mustafa Hussein — Digital Solutions Engineer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>tailwind.config={theme:{extend:{colors:{navy:'#050b14','navy-mid':'#0a1529','navy-light':'#102244',gold:'#c9a84c','gold-light':'#e4c26e','gold-pale':'rgba(201,168,76,0.08)'}}}}</script>
+<style>
+:root{
+  --navy:#050b14;--navy-mid:#0a1529;--navy-light:#102244;
+  --gold:#c9a84c;--gold-l:#e4c26e;
+  --border:rgba(201,168,76,0.16);--muted:#7a8ba0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:#fff;overflow-x:hidden;font-family:'Outfit',sans-serif;transition:font-family .2s}
+html[dir=rtl] body{font-family:'Cairo',sans-serif}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ── GOLD TEXT ── */
+.gt{background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.1rem 2rem;transition:.3s}
+nav.scrolled{background:rgba(5,11,20,.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-a{color:var(--muted);text-decoration:none;font-size:.83rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:.2s;position:relative}
+.nav-a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:.3s}
+.nav-a:hover{color:var(--gold-l)}.nav-a:hover::after{width:100%}
+html[dir=rtl] .nav-a::after{left:auto;right:0}
+.lang-btn{background:rgba(201,168,76,.1);border:1px solid var(--border);border-radius:4px;padding:.35rem .8rem;color:var(--gold);font-size:.78rem;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.04em}
+.lang-btn:hover{background:rgba(201,168,76,.2)}
+
+/* ── BUTTONS ── */
+.btn-g{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);padding:.85rem 2rem;border-radius:6px;font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);border:none;cursor:pointer;text-decoration:none;font-family:inherit}
+.btn-g:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 12px 35px rgba(201,168,76,.35)}
+.btn-o{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--gold);padding:.85rem 2rem;border-radius:6px;font-weight:600;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);border:1px solid var(--gold);cursor:pointer;text-decoration:none;font-family:inherit}
+.btn-o:hover{background:rgba(201,168,76,.08);transform:translateY(-2px);border-color:var(--gold-l);color:var(--gold-l)}
+
+/* ── SECTIONS ── */
+.sec{padding:6.5rem 2rem}
+.sec-label{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem}
+.sec-label::before{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+html[dir=rtl] .sec-label::before{display:none}
+html[dir=rtl] .sec-label::after{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+.sec-title{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;line-height:1.25;margin-bottom:1rem}
+.gold-bar{width:50px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-l));border-radius:2px;margin:1.2rem 0}
+html[dir=rtl] .gold-bar{margin-right:0}
+
+/* ── BG GRID ── */
+.grid-bg{background-image:linear-gradient(rgba(201,168,76,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.02) 1px,transparent 1px);background-size:64px 64px}
+
+/* ── GLOW ── */
+.glow{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0}
+
+/* ── CARD ── */
+.card{background:rgba(10,21,41,0.6);border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:2rem;transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1);position:relative;overflow:hidden;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:1}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:.3s}
+.card:hover{border-color:rgba(201,168,76,0.45);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,0.5),0 0 25px rgba(201,168,76,0.06)}
+.card:hover::before{opacity:1}
+
+/* ── SKILL PILL ── */
+.spill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.16);color:var(--gold-l);padding:.4rem 1rem;border-radius:100px;font-size:.78rem;font-weight:500;transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);white-space:nowrap}
+.spill:hover{background:rgba(201,168,76,.15);border-color:rgba(201,168,76,.55);color:#fff;transform:translateY(-2px);box-shadow:0 4px 15px rgba(201,168,76,.1)}
+
+/* ── PROJECT CARD ── */
+#projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.pcard{background:rgba(10,21,41,0.55);border:1px solid rgba(201,168,76,0.15);border-radius:18px;overflow:hidden;transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1);position:relative;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;flex-direction:column}
+.pcard:hover{border-color:rgba(201,168,76,0.5);transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,0.55),0 0 30px rgba(201,168,76,0.08)}
+.pcard--featured{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}
+.pcard--featured .pcard-thumb{flex:1;min-width:280px;max-height:280px}
+.pcard--featured .pcard-body-wrap{flex:1.2;min-width:300px;padding:1.75rem}
+.pcard-thumb{display:block;overflow:hidden;aspect-ratio:16/9;background:rgba(5,11,20,.8)}
+.pcard-thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .4s ease}
+.pcard:hover .pcard-thumb img{transform:scale(1.04)}
+.pcard-thumb--empty{display:flex;align-items:center;justify-content:center;min-height:180px;font-size:2.5rem;color:var(--gold);opacity:.4}
+.pcard-body-wrap{padding:1.35rem 1.5rem 1.5rem;flex:1;display:flex;flex-direction:column}
+.pcard-badge{font-size:.7rem;color:var(--gold);background:rgba(201,168,76,.1);padding:.2rem .65rem;border-radius:100px;border:1px solid rgba(201,168,76,.25)}
+.pcard-header{padding:1.85rem 1.85rem 0;position:relative}
+.pcard-body{padding:1.5rem 1.85rem 1.85rem}
+@media(max-width:900px){.pcard--featured{flex-direction:column}.pcard--featured .pcard-thumb{max-height:220px}}
+/* ── LIGHTBOX ── */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:300;display:none;align-items:center;justify-content:center;padding:2rem}
+.lightbox.open{display:flex}
+.lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:var(--gold);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:var(--navy);z-index:2}
+html[dir=rtl] .lightbox-close{right:auto;left:1.5rem}
+/* ── TESTIMONIAL FEATURED ── */
+.tcard--featured{grid-column:1/-1;border-color:rgba(201,168,76,.35);background:rgba(13,29,56,.7)}
+#testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+#testimonials-grid .tcard--featured{grid-column:1/-1}
+#testimonials-grid .tcard--featured .tcard-inner{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-start;position:relative;z-index:1}
+#testimonials-grid .tcard--featured .tcard-q{font-size:4rem}
+/* ── LIGHTBOX NAV ── */
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(201,168,76,.9);border:none;width:48px;height:48px;border-radius:50%;cursor:pointer;color:var(--navy);font-size:1.1rem;z-index:2;display:flex;align-items:center;justify-content:center;transition:.2s}
+.lightbox-nav:hover:not(:disabled){background:var(--gold-l)}
+.lightbox-nav:disabled{cursor:not-allowed}
+.lightbox-prev{left:1.5rem}
+.lightbox-next{right:1.5rem}
+html[dir=rtl] .lightbox-prev{left:auto;right:1.5rem}
+html[dir=rtl] .lightbox-next{right:auto;left:1.5rem}
+.lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:var(--gold-l);font-size:.85rem;font-weight:600;background:rgba(5,11,20,.7);padding:.35rem .9rem;border-radius:100px;border:1px solid var(--border)}
+.lightbox .lightbox-wrap{max-width:95%;max-height:90vh;display:flex;align-items:center;justify-content:center}
+.lightbox img{max-width:100%;max-height:90vh;border-radius:8px;object-fit:contain}
+.ptag{display:inline-block;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);color:var(--gold);padding:.25rem .9rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.9rem}
+
+/* ── PROCESS ── */
+.p-step{display:flex;gap:1.4rem;align-items:flex-start}
+html[dir=rtl] .p-step{flex-direction:row-reverse;text-align:right}
+.p-num{min-width:50px;height:50px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:var(--gold);flex-shrink:0;position:relative;z-index:1}
+
+/* ── TESTIMONIAL ── */
+.tcard{background:rgba(10,21,41,0.65);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative}
+.tcard-q{position:absolute;top:-18px;left:22px;font-size:5rem;color:var(--gold);opacity:.18;line-height:1;font-family:Georgia,serif}
+html[dir=rtl] .tcard-q{left:auto;right:22px}
+
+/* ── CONTACT FORM ── */
+.f-input{width:100%;background:rgba(5,11,20,.85);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.25rem;color:#fff;font-family:inherit;font-size:.9rem;outline:none;transition:.25s;z-index:2;position:relative}
+.f-input:focus{border-color:var(--gold);box-shadow:0 0 10px rgba(201,168,76,.15)}
+.f-input::placeholder{color:var(--muted)}
+
+/* ── STAT ── */
+.stat-n{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;line-height:1}
+
+/* ── AVATAR ── */
+.av-wrap{position:relative;display:inline-block}
+.av-ring{position:absolute;inset:-5px;border-radius:50%;background:conic-gradient(var(--gold) 0deg,transparent 180deg,var(--gold-l) 360deg);animation:spin 6s linear infinite}
+.av-ring-inner{position:absolute;inset:3px;border-radius:50%;background:var(--navy)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── SCROLL ── */
+.stb{position:fixed;bottom:1.8rem;right:1.8rem;width:44px;height:44px;background:var(--gold);border:none;border-radius:50%;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s;z-index:100;font-size:.9rem;box-shadow:0 4px 15px rgba(201,168,76,0.3)}
+.stb.show{opacity:1}.stb:hover{background:var(--gold-l);transform:translateY(-3px)}
+html[dir=rtl] .stb{right:auto;left:1.8rem}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(36px);transition:.75s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}.rv-d4{transition-delay:.4s}
+
+/* ── HERO FLOAT ── */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse-gold{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.4)}50%{box-shadow:0 0 0 20px rgba(201,168,76,0)}}
+
+/* ── MOBILE ── */
+.mob-menu{display:none;position:fixed;inset:0;background:var(--navy);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-a{color:var(--muted);text-decoration:none;font-size:1.2rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:.2s;padding:.5rem}
+.mob-a:hover{color:var(--gold)}
+@media(max-width:768px){.dsk-nav{display:none!important}.mob-btn{display:flex!important}}
+.mob-btn{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer}
+
+/* ── HIGHLIGHT BORDER ── */
+.hl-border{border-left:3px solid var(--gold);padding-left:1rem}
+html[dir=rtl] .hl-border{border-left:none;border-right:3px solid var(--gold);padding-left:0;padding-right:1rem}
+</style>
+</head>
+<body class="grid-bg">
+
+<!-- ═══ MOBILE MENU ═══ -->
+<div class="mob-menu" id="mobMenu">
+  <button onclick="closeMob()" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--gold);font-size:1.6rem;cursor:pointer"><i class="fa fa-times"></i></button>
+  <a href="#about" class="mob-a" data-en="About" data-ar="من أنا" onclick="closeMob()">About</a>
+  <a href="#services" class="mob-a" data-en="Services" data-ar="الخدمات" onclick="closeMob()">Services</a>
+  <a href="#projects" class="mob-a" data-en="Projects" data-ar="المشاريع" onclick="closeMob()">Projects</a>
+  <a href="#testimonials" class="mob-a" data-en="Reviews" data-ar="آراء العملاء" onclick="closeMob()">Reviews</a>
+  <a href="#skills" class="mob-a" data-en="Skills" data-ar="المهارات" onclick="closeMob()">Skills</a>
+  <a href="#education" class="mob-a" data-en="Education" data-ar="التعليم" onclick="closeMob()">Education</a>
+  <a href="عقد_احترافي_مصطفى_حسين.html" target="_blank" class="mob-a" data-en="Contracts" data-ar="العقود" onclick="closeMob()">Contracts</a>
+  <a href="#contact" class="mob-a" data-en="Contact" data-ar="تواصل" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="#" style="text-decoration:none">
+      <span style="font-size:1.1rem;font-weight:800;letter-spacing:.04em;color:#fff">MH <span style="color:var(--gold)">.</span></span>
+    </a>
+    <div class="dsk-nav flex items-center gap-8">
+      <a href="#about" class="nav-a" data-en="About" data-ar="من أنا">About</a>
+      <a href="#services" class="nav-a" data-en="Services" data-ar="الخدمات">Services</a>
+      <a href="#projects" class="nav-a" data-en="Projects" data-ar="المشاريع">Projects</a>
+      <a href="#testimonials" class="nav-a" data-en="Reviews" data-ar="آراء العملاء">Reviews</a>
+      <a href="#skills" class="nav-a" data-en="Skills" data-ar="المهارات">Skills</a>
+      <a href="#education" class="nav-a" data-en="Education" data-ar="التعليم">Education</a>
+      <a href="عقد_احترافي_مصطفى_حسين.html" target="_blank" class="nav-a" data-en="Contracts" data-ar="العقود">العقود</a>
+      <a href="#contact" class="nav-a btn-g" style="padding:.5rem 1.2rem;font-size:.78rem" data-en="Hire Me" data-ar="تواصل معي">Hire Me</a>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">English</button>
+    </div>
+    <div class="flex items-center gap-3" style="display:none" id="mobRight">
+      <button class="lang-btn" onclick="toggleLang()">English</button>
+      <button class="mob-btn" id="mobBtn" onclick="openMob()"><i class="fa fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:5rem" class="grid-bg">
+  <div class="glow" style="width:600px;height:600px;background:rgba(201,168,76,.07);top:-10%;right:-15%"></div>
+  <div class="glow" style="width:400px;height:400px;background:rgba(20,40,80,.4);bottom:5%;left:-10%"></div>
+
+  <div class="max-w-6xl mx-auto px-6 w-full relative" style="z-index:1">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+      <!-- Text -->
+      <div class="flex-1 rv">
+        <div class="sec-label rv rv-d1" data-en="Full Stack Developer · Tech Consultant" data-ar="مطور متكامل · مستشار تقني">Full Stack Developer · Tech Consultant</div>
+
+        <h1 class="rv rv-d1" style="font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.15;margin-bottom:1.5rem">
+          <span data-en="Building Digital Systems" data-ar="أبني أنظمة رقمية">Building Digital Systems</span><br>
+          <span class="gt" data-en="That Drive Real Business Growth" data-ar="تحقق نمواً حقيقياً للأعمال">That Drive Real Business Growth</span>
+        </h1>
+
+        <p class="rv rv-d2" style="font-size:1rem;line-height:1.8;color:var(--muted);max-width:520px;margin-bottom:2.2rem" data-en="I don't just write code — I solve business problems. From ERP systems to e-commerce platforms, I build systems that help businesses organize, automate, and scale." data-ar="لا أكتب كوداً فقط — أحل مشاكل الأعمال. من أنظمة ERP إلى منصات التجارة الإلكترونية، أبني أنظمة تساعد الشركات على التنظيم والأتمتة والنمو.">
+          I don't just write code — I solve business problems. From ERP systems to e-commerce platforms, I build systems that help businesses organize, automate, and scale.
+        </p>
+
+        <div class="flex flex-wrap gap-4 rv rv-d3">
+          <a href="#contact" class="btn-g"><i class="fa fa-comments"></i> <span data-en="Start a Project" data-ar="ابدأ مشروعك">Start a Project</span></a>
+          <a href="#projects" class="btn-o"><i class="fa fa-eye"></i> <span data-en="View My Work" data-ar="شاهد أعمالي">View My Work</span></a>
+        </div>
+
+        <!-- Badges -->
+        <div class="flex flex-wrap gap-3 mt-8 rv rv-d4">
+          <span class="spill"><i class="fa fa-map-marker-alt" style="color:var(--gold)"></i> <span data-en="Egypt · Saudi Arabia · Canada" data-ar="مصر · السعودية · كندا">Egypt · Saudi Arabia · Canada</span></span>
+          <span class="spill"><i class="fa fa-check-circle" style="color:var(--gold)"></i> <span data-en="Available for Freelance" data-ar="متاح للعمل الحر">Available for Freelance</span></span>
+        </div>
+      </div>
+
+      <!-- Avatar + floating cards -->
+      <div class="flex-shrink-0 relative" style="animation:float 5s ease-in-out infinite">
+        <div class="av-wrap">
+          <div class="av-ring"></div>
+          <div class="av-ring-inner"></div>
+          <img src="https://i.ibb.co/Fbpfy9Y5/ITI2.jpg" alt="Mustafa Hussein"
+            style="width:220px;height:220px;border-radius:50%;object-fit:cover;position:relative;z-index:2;display:block">
+        </div>
+
+        <!-- Floating badge 1 -->
+        <div class="card" style="position:absolute;top:-28px;right:-60px;padding:.8rem 1rem;min-width:155px;animation:float 4s ease-in-out infinite .5s;z-index:9">
+          <div style="display:flex;align-items:center;gap:.5rem">
+            <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse-gold 2s infinite"></div>
+            <span style="font-size:.75rem;font-weight:600;color:#fff" data-en="ITI Instructor" data-ar="معيد بـ ITI">ITI Instructor</span>
+          </div>
+          <div style="font-size:.68rem;color:var(--muted);margin-top:.2rem" data-en="Information Technology Institute" data-ar="معهد تكنولوجيا المعلومات">Information Technology Institute</div>
+        </div>
+
+        <!-- Floating badge 2 -->
+        <div class="card" style="position:absolute;bottom:-20px;left:-70px;padding:.8rem 1rem;min-width:150px;animation:float 4.5s ease-in-out infinite 1s;z-index:9">
+          <div style="font-size:.68rem;color:var(--muted);margin-bottom:.2rem" data-en="Projects Delivered" data-ar="مشاريع مُنجزة">Projects Delivered</div>
+          <div style="font-size:1.4rem;font-weight:900" class="gt">10+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<section style="background:rgba(10,21,41,.6);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 2rem;position:relative;z-index:10">
+  <div class="max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+    <div class="rv">
+      <div class="stat-n gt">10+</div>
+      <div style="font-size:.82rem;color:var(--muted);margin-top:.3rem;letter-spacing:.04em" data-en="Real Projects" data-ar="مشروع حقيقي">Real Projects</div>
+    </div>
+    <div class="rv rv-d1">
+      <div class="stat-n gt">3+</div>
+      <div style="font-size:.82rem;color:var(--muted);margin-top:.3rem;letter-spacing:.04em" data-en="Countries Served" data-ar="دول خدمتها">Countries Served</div>
+    </div>
+    <div class="rv rv-d2">
+      <div class="stat-n gt">150+</div>
+      <div style="font-size:.82rem;color:var(--muted);margin-top:.3rem;letter-spacing:.04em" data-en="Students Taught" data-ar="طالب درّبتهم">Students Taught</div>
+    </div>
+    <div class="rv rv-d3">
+      <div class="stat-n gt">3+</div>
+      <div style="font-size:.82rem;color:var(--muted);margin-top:.3rem;letter-spacing:.04em" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="sec" id="about">
+  <div class="max-w-6xl mx-auto relative" style="z-index:1">
+    <div class="flex flex-col lg:flex-row gap-14 items-center">
+
+      <!-- Left -->
+      <div class="flex-1 rv">
+        <div class="sec-label" data-en="Who I Am" data-ar="من أنا">Who I Am</div>
+        <h2 class="sec-title" data-en="More Than a Developer —" data-ar="أكثر من مجرد مطور —">More Than a Developer —</h2>
+        <h2 class="sec-title gt" style="margin-top:-.5rem" data-en="A Business Problem Solver" data-ar="أنا أحل مشاكل الأعمال">A Business Problem Solver</h2>
+        <div class="gold-bar"></div>
+
+        <div style="color:var(--muted);line-height:1.9;font-size:.95rem">
+          <p class="mb-4" data-en="I'm Mustafa Hussein Ramadan — a Full Stack Developer and Tech Instructor at ITI (Information Technology Institute), Egypt's leading government technology institution." data-ar="أنا مصطفى حسين رمضان — مطور برمجيات متكامل ومعيد في معهد تكنولوجيا المعلومات (ITI)، المعهد الحكومي الرائد في مجال تكنولوجيا المعلومات بمصر.">
+            I'm Mustafa Hussein Ramadan — a Full Stack Developer and Tech Instructor at ITI (Information Technology Institute), Egypt's leading government technology institution.
+          </p>
+          <p class="mb-4" data-en="I've worked with clients across Egypt, Saudi Arabia, and Canada — including collaborating with MedGulf, one of the largest insurance companies in the Gulf region." data-ar="عملت مع عملاء في مصر والسعودية وكندا — بما في ذلك التعاون مع شركة MedGulf، إحدى أكبر شركات التأمين في منطقة الخليج.">
+            I've worked with clients across Egypt, Saudi Arabia, and Canada — including collaborating with MedGulf, one of the largest insurance companies in the Gulf region.
+          </p>
+          <p data-en="My approach is simple: understand the business first, then build the system. Every line of code I write serves a real business purpose." data-ar="نهجي بسيط: افهم العمل أولاً، ثم ابنِ النظام. كل سطر كود أكتبه يخدم غرضاً تجارياً حقيقياً.">
+            My approach is simple: understand the business first, then build the system. Every line of code I write serves a real business purpose.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mt-6">
+          <div class="hl-border">
+            <div style="font-size:.72rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase" data-en="Currently" data-ar="حالياً">Currently</div>
+            <div style="font-size:.9rem;font-weight:600;color:#fff;margin-top:.15rem" data-en="Instructor @ ITI · Open to Freelance" data-ar="معيد بـ ITI · متاح للعمل الحر">Instructor @ ITI · Open to Freelance</div>
+          </div>
+          <div class="hl-border">
+            <div style="font-size:.72rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase" data-en="Based in" data-ar="أعمل من">Based in</div>
+            <div style="font-size:.9rem;font-weight:600;color:#fff;margin-top:.15rem" data-en="Egypt 🇪🇬 (Remote-first)" data-ar="مصر 🇪🇬 (عن بُعد)">Egypt 🇪🇬 (Remote-first)</div>
+          </div>
+        </div>
+
+        <div class="flex gap-4 mt-6">
+          <a href="https://www.medgulf.com.sa/home/" target="_blank" class="btn-o" style="padding:.6rem 1.2rem;font-size:.75rem">
+            <i class="fa fa-external-link-alt"></i> MedGulf
+          </a>
+          <a href="https://mostafa-courses.mb4952144.workers.dev/" target="_blank" class="btn-o" style="padding:.6rem 1.2rem;font-size:.75rem">
+            <i class="fa fa-graduation-cap"></i> <span data-en="My Courses" data-ar="دوراتي">My Courses</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: experience cards -->
+      <div class="flex-shrink-0 rv rv-d2" style="width:100%;max-width:380px">
+        <div class="flex flex-col gap-4">
+          <div class="card" style="display:flex;align-items:center;gap:1rem;padding:1.4rem">
+            <div style="width:48px;height:48px;border-radius:10px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;color:var(--gold)"><i class="fa fa-university"></i></div>
+            <div>
+              <div style="font-weight:700;font-size:.9rem;margin-bottom:.15rem" data-en="ITI — Tech Instructor" data-ar="ITI — معيد تقني">ITI — Tech Instructor</div>
+              <div style="font-size:.78rem;color:var(--muted)" data-en="Teaching modern web development & systems" data-ar="تدريس تطوير الويب الحديث والأنظمة">Teaching modern web development & systems</div>
+            </div>
+          </div>
+
+          <div class="card" style="display:flex;align-items:center;gap:1rem;padding:1.4rem">
+            <div style="width:48px;height:48px;border-radius:10px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;color:var(--gold)"><i class="fa fa-laptop-code"></i></div>
+            <div>
+              <div style="font-weight:700;font-size:.9rem;margin-bottom:.15rem" data-en="MedGulf — Saudi Arabia" data-ar="MedGulf — السعودية">MedGulf — Saudi Arabia</div>
+              <div style="font-size:.78rem;color:var(--muted)" data-en="Collaborated on enterprise digital systems" data-ar="تعاون على الأنظمة الرقمية المؤسسية">Collaborated on enterprise digital systems</div>
+            </div>
+          </div>
+
+          <div class="card" style="display:flex;align-items:center;gap:1rem;padding:1.4rem">
+            <div style="width:48px;height:48px;border-radius:10px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;color:var(--gold)"><i class="fa fa-users"></i></div>
+            <div>
+              <div style="font-weight:700;font-size:.9rem;margin-bottom:.15rem" data-en="Freelance — Global Clients" data-ar="فريلانسر — عملاء عالميون">Freelance — Global Clients</div>
+              <div style="font-size:.78rem;color:var(--muted)" data-en="Egypt, Saudi Arabia, Canada" data-ar="مصر، السعودية، كندا">Egypt, Saudi Arabia, Canada</div>
+            </div>
+          </div>
+
+          <div class="card" style="display:flex;align-items:center;gap:1rem;padding:1.4rem">
+            <div style="width:48px;height:48px;border-radius:10px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;color:var(--gold)"><i class="fa fa-trophy"></i></div>
+            <div>
+              <div style="font-weight:700;font-size:.9rem;margin-bottom:.15rem" data-en="Graduation — Team Leader" data-ar="مشروع التخرج — قائد الفريق">Graduation — Team Leader</div>
+              <div style="font-size:.78rem;color:var(--muted)" data-en="Led team building a healthy food platform" data-ar="قاد فريقاً لبناء منصة أكل صحي">Led team building a healthy food platform</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep" style="height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)"></div>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="sec" id="services">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center rv" style="max-width:640px;margin:0 auto 3.5rem">
+      <div class="sec-label" style="justify-content:center" data-en="What I Build" data-ar="ماذا أبني">What I Build</div>
+      <h2 class="sec-title" data-en="Digital Solutions for Real Business Needs" data-ar="حلول رقمية لاحتياجات الأعمال الحقيقية">Digital Solutions for Real Business Needs</h2>
+      <p style="color:var(--muted);font-size:.92rem;line-height:1.8;margin-top:.8rem" data-en="Every service is designed around one question: how does this help your business grow?" data-ar="كل خدمة مصممة حول سؤال واحد: كيف تساعد عملك على النمو؟">Every service is designed around one question: how does this help your business grow?</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <div class="card rv">
+        <div style="width:50px;height:50px;border-radius:10px;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--gold);margin-bottom:1.2rem"><i class="fa fa-chart-line"></i></div>
+        <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:.6rem" data-en="Business Systems & ERP" data-ar="أنظمة الأعمال و ERP">Business Systems & ERP</h3>
+        <p style="font-size:.85rem;color:var(--muted);line-height:1.8" data-en="Complete management systems: sales, purchases, inventory, reports, expenses — everything your business needs to run smoothly." data-ar="أنظمة إدارة متكاملة: مبيعات، مشتريات، مخازن، تقارير، مصاريف — كل ما يحتاجه عملك ليعمل بكفاءة.">Complete management systems: sales, purchases, inventory, reports, expenses — everything your business needs to run smoothly.</p>
+      </div>
+
+      <div class="card rv rv-d1">
+        <div style="width:50px;height:50px;border-radius:10px;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--gold);margin-bottom:1.2rem"><i class="fa fa-cash-register"></i></div>
+        <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:.6rem" data-en="POS & Inventory Systems" data-ar="أنظمة POS والمخازن">POS & Inventory Systems</h3>
+        <p style="font-size:.85rem;color:var(--muted);line-height:1.8" data-en="Fast point-of-sale systems with barcode support, shift reports, supplier management, and real-time inventory tracking." data-ar="أنظمة بيع سريعة بدعم الباركود، تقارير الشيفت، إدارة الموردين، ومتابعة المخزون في الوقت الفعلي.">Fast point-of-sale systems with barcode support, shift reports, supplier management, and real-time inventory tracking.</p>
+      </div>
+
+      <div class="card rv rv-d2">
+        <div style="width:50px;height:50px;border-radius:10px;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--gold);margin-bottom:1.2rem"><i class="fa fa-globe"></i></div>
+        <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:.6rem" data-en="Web Development" data-ar="تطوير المواقع">Web Development</h3>
+        <p style="font-size:.85rem;color:var(--muted);line-height:1.8" data-en="Modern, fast, and scalable websites and web applications for companies and individuals — built to convert visitors into customers." data-ar="مواقع وتطبيقات ويب حديثة وسريعة وقابلة للتطوير للشركات والأفراد — مبنية لتحويل الزوار إلى عملاء.">Modern, fast, and scalable websites and web applications for companies and individuals — built to convert visitors into customers.</p>
+      </div>
+
+      <div class="card rv rv-d1">
+        <div style="width:50px;height:50px;border-radius:10px;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--gold);margin-bottom:1.2rem"><i class="fa fa-mobile-alt"></i></div>
+        <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:.6rem" data-en="Mobile Apps (iOS & Android)" data-ar="تطبيقات الجوال (iOS & Android)">Mobile Apps (iOS & Android)</h3>
+        <p style="font-size:.85rem;color:var(--muted);line-height:1.8" data-en="Cross-platform mobile applications built with Flutter — one codebase, two platforms, full native performance." data-ar="تطبيقات جوال متعددة المنصات مبنية بـ Flutter — قاعدة كود واحدة، منصتان، أداء أصيل كامل.">Cross-platform mobile applications built with Flutter — one codebase, two platforms, full native performance.</p>
+      </div>
+
+      <div class="card rv rv-d2">
+        <div style="width:50px;height:50px;border-radius:10px;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--gold);margin-bottom:1.2rem"><i class="fa fa-graduation-cap"></i></div>
+        <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:.6rem" data-en="Educational Platforms" data-ar="المنصات التعليمية">Educational Platforms</h3>
+        <p style="font-size:.85rem;color:var(--muted);line-height:1.8" data-en="Student management systems, course platforms, attendance tracking, and academic reporting — built for schools, centers, and institutions." data-ar="أنظمة إدارة الطلاب، منصات الدورات، تتبع الحضور، والتقارير الأكاديمية — مبنية للمدارس والمراكز والمؤسسات.">Student management systems, course platforms, attendance tracking, and academic reporting — built for schools, centers, and institutions.</p>
+      </div>
+
+      <div class="card rv rv-d3">
+        <div style="width:50px;height:50px;border-radius:10px;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--gold);margin-bottom:1.2rem"><i class="fa fa-comments-dollar"></i></div>
+        <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:.6rem" data-en="Tech Consulting" data-ar="الاستشارات التقنية">Tech Consulting</h3>
+        <p style="font-size:.85rem;color:var(--muted);line-height:1.8" data-en="Not sure what system you need? I'll analyze your business, map the gaps, and recommend the right digital solution — before you spend a single dollar." data-ar="لست متأكداً من النظام الذي تحتاجه؟ سأحلل عملك، وأحدد الفجوات، وأوصي بالحل الرقمي الصحيح — قبل أن تنفق قرشاً واحداً.">Not sure what system you need? I'll analyze your business, map the gaps, and recommend the right digital solution — before you spend a single dollar.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div style="height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);max-width:800px;margin:0 auto"></div>
+
+<!-- ═══ PROJECTS ═══ -->
+<section class="sec" id="projects">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center rv" style="max-width:640px;margin:0 auto 3.5rem">
+      <div class="sec-label" style="justify-content:center" data-en="Real Projects" data-ar="مشاريع حقيقية">Real Projects</div>
+      <h2 class="sec-title" data-en="Systems That Solve Real Problems" data-ar="أنظمة تحل مشاكل حقيقية">Systems That Solve Real Problems</h2>
+      <p style="color:var(--muted);font-size:.92rem;line-height:1.8;margin-top:.8rem" data-en="Each project is a case study — a real challenge, a real solution, and a real result." data-ar="كل مشروع هو دراسة حالة — تحدٍّ حقيقي، وحل حقيقي، ونتيجة حقيقية.">Each project is a case study — a real challenge, a real solution, and a real result.</p>
+    </div>
+
+    <div id="projects-grid"></div>
+  </div>
+</section>
+
+<div style="height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);max-width:800px;margin:0 auto"></div>
+
+<!-- ═══ SKILLS ═══ -->
+<section class="sec" id="skills" style="background:rgba(13,29,56,.3)">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-12 items-start">
+      <div class="rv" style="flex-shrink:0;max-width:320px">
+        <div class="sec-label" data-en="My Tech Stack" data-ar="مهاراتي التقنية">My Tech Stack</div>
+        <h2 class="sec-title" data-en="The Tools Behind the Solutions" data-ar="الأدوات وراء الحلول">The Tools Behind the Solutions</h2>
+        <div class="gold-bar"></div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.8" data-en="I use modern, production-tested technologies to build systems that are fast, reliable, and maintainable. I also offer comprehensive training on these stacks." data-ar="أستخدم تقنيات حديثة ومُختبرة في الإنتاج لبناء أنظمة سريعة وموثوقة وقابلة للصيانة. كما أقدم تدريباً شاملاً على هذه التقنيات.">I use modern, production-tested technologies to build systems that are fast, reliable, and maintainable. I also offer comprehensive training on these stacks.</p>
+      </div>
+
+      <div class="flex-1 rv rv-d1">
+        <div class="mb-6 bg-navy-mid/30 p-5 rounded-xl border border-gold/10">
+          <div style="font-size:.78rem;color:var(--gold);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem"><i class="fa fa-desktop"></i> <span data-en="Frontend Development" data-ar="تطوير الواجهات الأمامية">Frontend Development</span></div>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="spill"><i class="fab fa-html5" style="color:#e34f26"></i> HTML5</span>
+            <span class="spill"><i class="fab fa-css3-alt" style="color:#1572b6"></i> CSS3</span>
+            <span class="spill"><i class="fab fa-js-square" style="color:#f7df1e"></i> JavaScript</span>
+            <span class="spill"><i class="fab fa-react" style="color:#61dafb"></i> React.js</span>
+            <span class="spill"><i class="fa fa-code" style="color:#3178c6"></i> TypeScript</span>
+            <span class="spill"><i class="fa fa-layer-group" style="color:#007fff"></i> MUI (Material UI)</span>
+            <span class="spill"><i class="fab fa-angular" style="color:#dd0031"></i> Angular</span>
+            <span class="spill"><i class="fa fa-wind" style="color:#38bdf8"></i> Tailwind CSS</span>
+          </div>
+        </div>
+        <div class="mb-6 bg-navy-mid/30 p-5 rounded-xl border border-gold/10">
+          <div style="font-size:.78rem;color:var(--gold);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem"><i class="fa fa-mobile-alt"></i> <span data-en="Mobile Development" data-ar="تطوير تطبيقات الجوال">Mobile Development</span></div>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="spill"><i class="fa fa-mobile-alt" style="color:#02569b"></i> Flutter</span>
+            <span class="spill"><i class="fa fa-cubes" style="color:#01c2e6"></i> Dart</span>
+            <span class="spill" data-en="Cross-Platform Apps" data-ar="تطبيقات عابرة للمنصات">Cross-Platform Apps</span>
+          </div>
+        </div>
+        <div class="mb-6 bg-navy-mid/30 p-5 rounded-xl border border-gold/10">
+          <div style="font-size:.78rem;color:var(--gold);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem"><i class="fa fa-database"></i> <span data-en="Backend & Cloud Ecosystem" data-ar="الخوادم وقواعد البيانات السحابية">Backend & Cloud Ecosystem</span></div>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="spill"><i class="fa fa-fire" style="color:#ffa611"></i> Firebase</span>
+            <span class="spill"><i class="fa fa-bolt" style="color:#3ecf8e"></i> Supabase</span>
+            <span class="spill"><i class="fab fa-laravel" style="color:#ff2d20"></i> Laravel (PHP)</span>
+            <span class="spill"><i class="fab fa-node-js" style="color:#339933"></i> Node.js</span>
+            <span class="spill"><i class="fa fa-database" style="color:#00758f"></i> MySQL</span>
+            <span class="spill"><i class="fa fa-server" style="color:#f7df1e"></i> RESTful APIs</span>
+          </div>
+        </div>
+        <div class="mb-6 bg-navy-mid/30 p-5 rounded-xl border border-gold/10">
+          <div style="font-size:.78rem;color:var(--gold);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem"><i class="fa fa-vial"></i> <span data-en="Quality Assurance & Testing" data-ar="جودة البرمجيات والاختبار">Quality Assurance & Testing</span></div>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="spill"><i class="fa fa-check-double" style="color:#4caf50"></i> Unit Testing</span>
+            <span class="spill" data-en="Jest & React Testing Library" data-ar="مكتبات اختبار ريأكت (Jest)">Jest & RTL</span>
+            <span class="spill" data-en="Flutter Test" data-ar="اختبارات فلاتر">Flutter Test</span>
+          </div>
+        </div>
+        <div class="bg-navy-mid/30 p-5 rounded-xl border border-gold/10">
+          <div style="font-size:.78rem;color:var(--gold);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem"><i class="fa fa-tools"></i> <span data-en="Tools & Architecture" data-ar="الأدوات وهيكلة البرمجيات">Tools & Architecture</span></div>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="spill"><i class="fab fa-git-alt" style="color:#f05032"></i> Git & GitHub</span>
+            <span class="spill" data-en="System Analysis" data-ar="تحليل وتصميم النظم">System Analysis</span>
+            <span class="spill" data-en="Database Design" data-ar="تصميم قواعد البيانات">Database Design</span>
+            <span class="spill" data-en="Team Leadership" data-ar="قيادة الفرق البرمجية">Team Leadership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="sec" style="background:var(--navy)">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center rv" style="margin-bottom:3.5rem">
+      <div class="sec-label" style="justify-content:center" data-en="How We Work Together" data-ar="كيف نعمل معاً">How We Work Together</div>
+      <h2 class="sec-title" data-en="From Idea to Working System" data-ar="من الفكرة إلى النظام العامل">From Idea to Working System</h2>
+    </div>
+    <div class="flex flex-col gap-8">
+      <div class="p-step rv">
+        <div class="p-num">01</div>
+        <div style="flex:1">
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:.4rem" data-en="Discovery & Business Analysis" data-ar="الاكتشاف وتحليل الأعمال">Discovery & Business Analysis</h3>
+          <p style="font-size:.87rem;color:var(--muted);line-height:1.8" data-en="We sit together, I ask the right questions, and we map exactly what your business needs — not what's technically impressive, but what's actually useful." data-ar="نجلس معاً، أطرح الأسئلة الصحيحة، ونحدد بالضبط ما يحتاجه عملك — ليس ما يبدو مثيراً تقنياً، بل ما هو مفيد فعلاً.">We sit together, I ask the right questions, and we map exactly what your business needs — not what's technically impressive, but what's actually useful.</p>
+        </div>
+      </div>
+      <div class="p-step rv rv-d1">
+        <div class="p-num">02</div>
+        <div style="flex:1">
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:.4rem" data-en="Design & Planning" data-ar="التصميم والتخطيط">Design & Planning</h3>
+          <p style="font-size:.87rem;color:var(--muted);line-height:1.8" data-en="I design the system architecture, database structure, and user interface wireframes. You see exactly what you're getting before a single line of code is written." data-ar="أصمم بنية النظام وهيكل قاعدة البيانات وإطارات واجهة المستخدم. ترى بالضبط ما ستحصل عليه قبل كتابة سطر كود واحد.">I design the system architecture, database structure, and user interface wireframes. You see exactly what you're getting before a single line of code is written.</p>
+        </div>
+      </div>
+      <div class="p-step rv rv-d2">
+        <div class="p-num">03</div>
+        <div style="flex:1">
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:.4rem" data-en="Development & Testing" data-ar="التطوير والاختبار">Development & Testing</h3>
+          <p style="font-size:.87rem;color:var(--muted);line-height:1.8" data-en="I build the system in sprints with regular check-ins. You get progress updates and test each feature as it's completed — no surprises at the end." data-ar="أبني النظام على مراحل مع متابعة منتظمة. تحصل على تحديثات تقدم وتختبر كل ميزة عند اكتمالها — بدون مفاجآت في النهاية.">I build the system in sprints with regular check-ins. You get progress updates and test each feature as it's completed — no surprises at the end.</p>
+        </div>
+      </div>
+      <div class="p-step rv rv-d3">
+        <div class="p-num">04</div>
+        <div style="flex:1">
+          <h3 style="font-weight:700;font-size:1rem;margin-bottom:.4rem" data-en="Delivery, Training & Support" data-ar="التسليم والتدريب والدعم">Delivery, Training & Support</h3>
+          <p style="font-size:.87rem;color:var(--muted);line-height:1.8" data-en="Full handover with training sessions and explanation videos. Plus 1 month of free technical support — I don't disappear after delivery." data-ar="تسليم كامل مع جلسات تدريب وفيديوهات شرح. بالإضافة إلى شهر من الدعم الفني المجاني — لا أختفي بعد التسليم.">Full handover with training sessions and explanation videos. Plus 1 month of free technical support — I don't disappear after delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="sec" id="testimonials" style="background:rgba(13,29,56,.3)">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center rv" style="margin-bottom:3rem">
+      <div class="sec-label" style="justify-content:center" data-en="Client Testimonials" data-ar="آراء العملاء">Client Testimonials</div>
+      <h2 class="sec-title" data-en="What Clients Say" data-ar="ما يقوله العملاء">What Clients Say</h2>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:.6rem;max-width:520px;margin-left:auto;margin-right:auto" data-en="Real feedback from business owners and institutions I built systems for." data-ar="آراء حقيقية من أصحاب أعمال ومؤسسات بنيت لهم أنظمة فعلية.">Real feedback from business owners and institutions I built systems for.</p>
+    </div>
+    <div id="testimonials-grid"></div>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION ═══ -->
+<section class="sec" id="education">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center rv" style="margin-bottom:3rem">
+      <div class="sec-label" style="justify-content:center" data-en="Knowledge Sharing" data-ar="مشاركة المعرفة">Knowledge Sharing</div>
+      <h2 class="sec-title" data-en="Teaching & Educational Content" data-ar="التدريس والمحتوى التعليمي">Teaching & Educational Content</h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="card rv" style="display:flex;flex-direction:column;gap:1rem">
+        <div style="display:flex;align-items:center;gap:1rem">
+          <div style="width:56px;height:56px;border-radius:12px;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--gold);flex-shrink:0"><i class="fa fa-university"></i></div>
+          <div>
+            <h3 style="font-weight:700;font-size:1rem" data-en="ITI — Information Technology Institute" data-ar="ITI — معهد تكنولوجيا المعلومات">ITI — Information Technology Institute</h3>
+            <span style="font-size:.75rem;background:rgba(201,168,76,.12);color:var(--gold);padding:.2rem .7rem;border-radius:100px;border:1px solid rgba(201,168,76,.2)" data-en="Instructor (معيد)" data-ar="معيد">Instructor (معيد)</span>
+          </div>
+        </div>
+        <p style="font-size:.87rem;color:var(--muted);line-height:1.8" data-en="Teaching full stack web development at Egypt's premier government technology institute. Covering modern frontend frameworks, backend systems, and real-world project building." data-ar="تدريس تطوير الويب المتكامل في أبرز معهد تكنولوجي حكومي في مصر. يشمل أطر الواجهة الأمامية الحديثة وأنظمة الخادم الخلفي وبناء مشاريع حقيقية.">Teaching full stack web development at Egypt's premier government technology institute. Covering modern frontend frameworks, backend systems, and real-world project building.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="spill">React.js</span><span class="spill">Laravel</span><span class="spill">JavaScript</span><span class="spill" data-en="Web Systems" data-ar="أنظمة الويب">Web Systems</span>
+        </div>
+      </div>
+
+      <div class="card rv rv-d1" style="display:flex;flex-direction:column;gap:1rem;border-color:rgba(201,168,76,.3)">
+        <div style="display:flex;align-items:center;gap:1rem">
+          <div style="width:56px;height:56px;border-radius:12px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--gold);flex-shrink:0"><i class="fa fa-graduation-cap"></i></div>
+          <div>
+            <h3 style="font-weight:700;font-size:1rem" data-en="Online Courses Platform" data-ar="منصة الدورات الإلكترونية">Online Courses Platform</h3>
+            <span style="font-size:.75rem;background:rgba(34,197,94,.1);color:#22c55e;padding:.2rem .7rem;border-radius:100px;border:1px solid rgba(34,197,94,.25)" data-en="Live & Running ↗" data-ar="متاحة وجارية الآن ↗">Live & Running ↗</span>
+          </div>
+        </div>
+        <p style="font-size:.87rem;color:var(--muted);line-height:1.8" data-en="My personal educational platform with courses, tutorials, and technical content for Arabic-speaking developers who want to build real systems. Offering structured paths in high-demand stacks:" data-ar="منصتي التعليمية الشخصية لتقديم دورات تدريبية متطورة ومحتوى تقني عالي الجودة للطلاب والمطورين العرب. تشمل مسارات تعليمية وتطبيقية متكاملة:">My personal educational platform with courses, tutorials, and technical content for Arabic-speaking developers who want to build real systems. Offering structured paths in high-demand stacks:</p>
+        
+        <div class="grid grid-cols-2 gap-2 my-1" style="font-size:.75rem">
+          <div style="display:flex;align-items:center;gap:.4rem;color:#E4C26E"><i class="fab fa-react" style="width:14px"></i> <span>React & TypeScript</span></div>
+          <div style="display:flex;align-items:center;gap:.4rem;color:#E4C26E"><i class="fa fa-mobile-alt" style="width:14px"></i> <span>Flutter & Dart</span></div>
+          <div style="display:flex;align-items:center;gap:.4rem;color:#E4C26E"><i class="fa fa-fire" style="width:14px"></i> <span>Firebase Suite</span></div>
+          <div style="display:flex;align-items:center;gap:.4rem;color:#E4C26E"><i class="fa fa-bolt" style="width:14px"></i> <span>Supabase Cloud</span></div>
+          <div style="display:flex;align-items:center;gap:.4rem;color:#E4C26E"><i class="fa fa-vial" style="width:14px"></i> <span>Unit Testing</span></div>
+          <div style="display:flex;align-items:center;gap:.4rem;color:#E4C26E"><i class="fa fa-cubes" style="width:14px"></i> <span>MUI (Material UI)</span></div>
+          <div style="display:flex;align-items:center;gap:.4rem;color:#E4C26E"><i class="fab fa-html5" style="width:14px"></i> <span>HTML5 & CSS3</span></div>
+          <div style="display:flex;align-items:center;gap:.4rem;color:#E4C26E"><i class="fab fa-js-square" style="width:14px"></i> <span>Modern JavaScript</span></div>
+        </div>
+        
+        <a href="https://mostafa-courses.mb4952144.workers.dev/" target="_blank" class="btn-g text-center justify-center mt-2" style="padding:.65rem 1.4rem;font-size:.8rem;align-self:flex-start">
+          <i class="fa fa-external-link-alt"></i> <span data-en="Visit Platform" data-ar="زيارة المنصة">Visit Platform</span>
+        </a>
+      </div>
+
+      <div class="card rv rv-d2" style="display:flex;flex-direction:column;gap:1rem;border-color:rgba(255,0,0,.15)">
+        <div style="display:flex;align-items:center;gap:1rem">
+          <div style="width:56px;height:56px;border-radius:12px;background:rgba(255,0,0,.12);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#ff4444;flex-shrink:0"><i class="fab fa-youtube"></i></div>
+          <div>
+            <h3 style="font-weight:700;font-size:1rem" data-en="JS Hacks — YouTube Channel" data-ar="قناة JS Hacks على يوتيوب">JS Hacks — YouTube Channel</h3>
+            <span style="font-size:.75rem;color:var(--muted)" data-en="Tutorials · Tips · Real-world dev" data-ar="شروحات · نصائح · تطوير عملي">Tutorials · Tips · Real-world dev</span>
+          </div>
+        </div>
+        <p style="font-size:.87rem;color:var(--muted);line-height:1.8" data-en="Technical videos and programming hacks for Arabic-speaking developers — subscribe for practical content alongside my courses." data-ar="فيديوهات تقنية ونصائح برمجية للمطورين العرب — اشترك للمحتوى العملي إلى جانب دوراتي.">Technical videos and programming hacks for Arabic-speaking developers — subscribe for practical content alongside my courses.</p>
+        <a href="https://www.youtube.com/@js_hacks" target="_blank" rel="noopener" class="btn-o text-center justify-center" style="padding:.65rem 1.4rem;font-size:.8rem;align-self:flex-start;border-color:rgba(255,68,68,.5);color:#ff6b6b">
+          <i class="fab fa-youtube"></i> <span data-en="Subscribe on YouTube" data-ar="اشترك في القناة">Subscribe on YouTube</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY ME ═══ -->
+<section style="background:rgba(201,168,76,.03);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 2rem">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="sec-title text-center rv" style="margin-bottom:2.5rem" data-en="Why Clients Choose Me" data-ar="لماذا يختارني العملاء">Why Clients Choose Me</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="rv text-center">
+        <div style="font-size:2rem;margin-bottom:.6rem;color:var(--gold)"><i class="fa fa-brain"></i></div>
+        <h4 style="font-weight:700;font-size:.95rem;margin-bottom:.4rem" data-en="Business-First Thinking" data-ar="تفكير بمنطق الأعمال">Business-First Thinking</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.7" data-en="I understand your business before touching any code." data-ar="أفهم عملك قبل لمس أي كود.">I understand your business before touching any code.</p>
+      </div>
+      <div class="rv rv-d1 text-center">
+        <div style="font-size:2rem;margin-bottom:.6rem;color:var(--gold)"><i class="fa fa-shield-alt"></i></div>
+        <h4 style="font-weight:700;font-size:.95rem;margin-bottom:.4rem" data-en="Proven Track Record" data-ar="سجل مثبت">Proven Track Record</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.7" data-en="Real contracts, real clients, real systems in production." data-ar="عقود حقيقية، عملاء حقيقيون، أنظمة حقيقية في الإنتاج.">Real contracts, real clients, real systems in production.</p>
+      </div>
+      <div class="rv rv-d2 text-center">
+        <div style="font-size:2rem;margin-bottom:.6rem;color:var(--gold)"><i class="fa fa-headset"></i></div>
+        <h4 style="font-weight:700;font-size:.95rem;margin-bottom:.4rem" data-en="Post-Delivery Support" data-ar="دعم ما بعد التسليم">Post-Delivery Support</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.7" data-en="I don't disappear. 1 month free support + training included." data-ar="لا أختفي. شهر دعم مجاني + تدريب مضمّن.">I don't disappear. 1 month free support + training included.</p>
+      </div>
+      <div class="rv rv-d3 text-center">
+        <div style="font-size:2rem;margin-bottom:.6rem;color:var(--gold)"><i class="fa fa-expand-arrows-alt"></i></div>
+        <h4 style="font-weight:700;font-size:.95rem;margin-bottom:.4rem" data-en="Built to Scale" data-ar="مبني للتوسع">Built to Scale</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.7" data-en="Every system is architected to grow with your business." data-ar="كل نظام مصمم لينمو مع عملك.">Every system is architected to grow with your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="sec" id="contact">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-12">
+      <!-- Left -->
+      <div class="flex-1 rv">
+        <div class="sec-label" data-en="Let's Work Together" data-ar="لنعمل معاً">Let's Work Together</div>
+        <h2 class="sec-title" data-en="Have a Project in Mind?" data-ar="لديك مشروع في ذهنك؟">Have a Project in Mind?</h2>
+        <div class="gold-bar"></div>
+        <p style="color:var(--muted);font-size:.92rem;line-height:1.9;margin-bottom:2rem" data-en="Tell me about your business and what you're trying to achieve. I'll come back with a clear plan, timeline, and honest pricing. No fluff." data-ar="أخبرني عن عملك وما تريد تحقيقه. سأعود بخطة واضحة وجدول زمني وتسعير صادق. بدون تضليل.">Tell me about your business and what you're trying to achieve. I'll come back with a clear plan, timeline, and honest pricing. No fluff.</p>
+
+        <div class="flex flex-col gap-4">
+          <a href="https://wa.me/201157787113" target="_blank" style="display:flex;align-items:center;gap:1rem;text-decoration:none;padding:1rem 1.2rem;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);border-radius:10px;transition:.2s;color:#fff" onmouseover="this.style.background='rgba(37,211,102,.14)'" onmouseout="this.style.background='rgba(37,211,102,.08)'">
+            <i class="fab fa-whatsapp" style="font-size:1.4rem;color:#25d366"></i>
+            <div>
+              <div style="font-weight:600;font-size:.88rem" data-en="WhatsApp — Fastest Response" data-ar="واتساب — أسرع رد">WhatsApp — Fastest Response</div>
+              <div style="font-size:.78rem;color:var(--muted)">01157787113</div>
+            </div>
+          </a>
+
+          <a href="mailto:mustafahussienatya@gmail.com" style="display:flex;align-items:center;gap:1rem;text-decoration:none;padding:1rem 1.2rem;background:rgba(201,168,76,.06);border:1px solid var(--border);border-radius:10px;transition:.2s;color:#fff" onmouseover="this.style.borderColor='rgba(201,168,76,.4)'" onmouseout="this.style.borderColor='var(--border)'">
+            <i class="fa fa-envelope" style="font-size:1.3rem;color:var(--gold)"></i>
+            <div>
+              <div style="font-weight:600;font-size:.88rem" data-en="Email — Business Inquiries" data-ar="البريد الإلكتروني — استفسارات الأعمال">Email — Business Inquiries</div>
+              <div style="font-size:.78rem;color:var(--muted)">mustafahussienatya@gmail.com</div>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/mostafa-hussain-ramadan/" target="_blank" style="display:flex;align-items:center;gap:1rem;text-decoration:none;padding:1rem 1.2rem;background:rgba(10,102,194,.06);border:1px solid rgba(10,102,194,.2);border-radius:10px;transition:.2s;color:#fff" onmouseover="this.style.borderColor='rgba(10,102,194,.4)'" onmouseout="this.style.borderColor='rgba(10,102,194,.2)'">
+            <i class="fab fa-linkedin" style="font-size:1.3rem;color:#0a66c2"></i>
+            <div>
+              <div style="font-weight:600;font-size:.88rem" data-en="LinkedIn — Professional Network" data-ar="لينكد إن — الشبكة المهنية">LinkedIn — Professional Network</div>
+              <div style="font-size:.78rem;color:var(--muted)">mostafa-hussain-ramadan</div>
+            </div>
+          </a>
+
+          <a href="https://mostafa-courses.mb4952144.workers.dev/" target="_blank" style="display:flex;align-items:center;gap:1rem;text-decoration:none;padding:1rem 1.2rem;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.2);border-radius:10px;transition:.2s;color:#fff" onmouseover="this.style.borderColor='rgba(59,130,246,.4)'" onmouseout="this.style.borderColor='rgba(59,130,246,.2)'">
+            <i class="fa fa-graduation-cap" style="font-size:1.3rem;color:#60a5fa"></i>
+            <div>
+              <div style="font-weight:600;font-size:.88rem" data-en="Educational Platform" data-ar="المنصة التعليمية">Educational Platform</div>
+              <div style="font-size:.78rem;color:var(--muted)">mostafa-courses.mb4952144.workers.dev</div>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/@js_hacks" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:1rem;text-decoration:none;padding:1rem 1.2rem;background:rgba(255,0,0,.06);border:1px solid rgba(255,68,68,.2);border-radius:10px;transition:.2s;color:#fff" onmouseover="this.style.borderColor='rgba(255,68,68,.45)'" onmouseout="this.style.borderColor='rgba(255,68,68,.2)'">
+            <i class="fab fa-youtube" style="font-size:1.3rem;color:#ff4444"></i>
+            <div>
+              <div style="font-weight:600;font-size:.88rem" data-en="YouTube — JS Hacks" data-ar="يوتيوب — JS Hacks">YouTube — JS Hacks</div>
+              <div style="font-size:.78rem;color:var(--muted)">youtube.com/@js_hacks</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="flex-1 rv rv-d2">
+        <div class="card" style="border-color:rgba(201,168,76,.3)">
+          <h3 style="font-weight:700;margin-bottom:1.5rem;font-size:1rem" data-en="Send Me a Message" data-ar="أرسل لي رسالة">Send Me a Message</h3>
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-col sm:flex-row gap-4">
+              <input class="f-input" type="text" id="contact-name" data-placeholder-en="Your Name" data-placeholder-ar="اسمك" placeholder="Your Name" required>
+              <input class="f-input" type="email" id="contact-email" data-placeholder-en="Your Email" data-placeholder-ar="بريدك الإلكتروني" placeholder="Your Email" required>
+            </div>
+            <input class="f-input" type="text" id="contact-subject" data-placeholder-en="Subject (e.g. I need an ERP system)" data-placeholder-ar="الموضوع (مثال: أحتاج نظام ERP)" placeholder="Subject (e.g. I need an ERP system)" required>
+            <textarea class="f-input" id="contact-message" rows="4" data-placeholder-en="Tell me about your project and business needs..." data-placeholder-ar="أخبرني عن مشروعك واحتياجات عملك..." placeholder="Tell me about your project and business needs..." style="resize:vertical" required></textarea>
+            <button class="btn-g" id="contact-submit" onclick="sendToWhatsApp()" style="width:100%;justify-content:center">
+              <i class="fab fa-whatsapp"></i> <span data-en="Send to WhatsApp" data-ar="إرسال عبر واتساب">Send to WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer style="background:rgba(4, 9, 18, 0.95);border-top:1px solid var(--border);padding:3rem 2rem">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="text-center md:text-left">
+      <span style="font-size:1.2rem;font-weight:900;color:#fff;letter-spacing:.04em">MH <span style="color:var(--gold)">.</span></span>
+      <span style="font-size:.82rem;color:var(--muted);margin-left:.75rem" data-en="Mustafa Hussein — Digital Solutions Engineer" data-ar="مصطفى حسين — مهندس حلول رقمية">Mustafa Hussein — Digital Solutions Engineer</span>
+    </div>
+    
+    <!-- Footer Social Links -->
+    <div class="flex items-center gap-4">
+      <a href="https://wa.me/201157787113" target="_blank" class="spill" style="padding:.5rem;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:mustafahussienatya@gmail.com" class="spill" style="padding:.5rem;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center" title="Email"><i class="fa fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/mostafa-hussain-ramadan/" target="_blank" class="spill" style="padding:.5rem;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://mostafa-courses.mb4952144.workers.dev/" target="_blank" class="spill" style="padding:.5rem;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center" title="Courses"><i class="fa fa-graduation-cap"></i></a>
+      <a href="https://www.youtube.com/@js_hacks" target="_blank" rel="noopener" class="spill" style="padding:.5rem;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <div style="font-size:.78rem;color:var(--muted)" data-en="© 2026 · All rights reserved · Built with passion" data-ar="© 2026 · جميع الحقوق محفوظة · بُني بشغف">© 2026 · All rights reserved · Built with passion</div>
+  </div>
+</footer>
+
+<!-- ═══ SCROLL TO TOP ═══ -->
+<button class="stb" id="stb" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-arrow-up"></i></button>
+
+<script src="js/projects-data.js"></script>
+<script src="js/portfolio-common.js"></script>
+<script src="js/projects-home.js"></script>
+<script>
+initNavScroll();
+initReveal();
+initMobileNav();
+applyLang();
+
+/* ── WHATSAPP FORM INTEGRATION ── */
+function sendToWhatsApp() {
+  const nameEl = document.getElementById('contact-name');
+  const emailEl = document.getElementById('contact-email');
+  const subjectEl = document.getElementById('contact-subject');
+  const messageEl = document.getElementById('contact-message');
+
+  const nameVal = nameEl ? nameEl.value.trim() : '';
+  const emailVal = emailEl ? emailEl.value.trim() : '';
+  const subjectVal = subjectEl ? subjectEl.value.trim() : '';
+  const messageVal = messageEl ? messageEl.value.trim() : '';
+
+  if (!nameVal || !emailVal || !subjectVal || !messageVal) {
+    alert(lang === 'ar' ? 'الرجاء ملء جميع الحقول المطلوبة!' : 'Please fill in all required fields!');
+    return;
+  }
+
+  // Format the message
+  let text = '';
+  if (lang === 'ar') {
+    text = `السلام عليكم يا بشمهندس مصطفى،\n\n` +
+           `أنا مهتم بالتواصل معك. إليك التفاصيل:\n` +
+           `• *الاسم*: ${nameVal}\n` +
+           `• *البريد الإلكتروني*: ${emailVal}\n` +
+           `• *الموضوع*: ${subjectVal}\n\n` +
+           `*الرسالة*:\n${messageVal}`;
+  } else {
+    text = `Hello Eng. Mustafa,\n\n` +
+           `I am interested in contacting you. Here are my details:\n` +
+           `• *Name*: ${nameVal}\n` +
+           `• *Email*: ${emailVal}\n` +
+           `• *Subject*: ${subjectVal}\n\n` +
+           `*Message*:\n${messageVal}`;
+  }
+
+  const encodedText = encodeURIComponent(text);
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=201157787113&text=${encodedText}`;
+  window.open(whatsappUrl, '_blank');
+}
+</script>
+</body>
+</html>
