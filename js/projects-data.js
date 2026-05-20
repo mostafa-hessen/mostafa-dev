@@ -249,29 +249,16 @@ window.TESTIMONIALS = [
     }
   },
   {
-    id: 'mohammed-k',
+    id: 'ahmed-el-rayan',
     featured: false,
-    projectId: null,
+    projectId: 'erp',
     photo: null,
-    initials: { en: 'MK', ar: 'MK' },
-    name: { en: 'Mohammed K.', ar: 'محمد ك.' },
-    role: { en: 'Business Owner, Saudi Arabia', ar: 'صاحب عمل، السعودية' },
+    initials: { en: 'AR', ar: 'أر' },
+    name: { en: 'Ahmed El Rayan', ar: 'أحمد الريان' },
+    role: { en: 'Client — Sales System', ar: 'عميل — برنامج المبيعات' },
     text: {
-      en: 'Professional from start to finish. Understood requirements quickly and delivered exactly what we needed.',
-      ar: 'تجربة احترافية من البداية للنهاية. فهم المتطلبات بسرعة وسلّم بالضبط ما احتجناه.'
-    }
-  },
-  {
-    id: 'sheikh-saad',
-    featured: false,
-    projectId: 'quran',
-    photo: null,
-    initials: { en: 'SS', ar: 'سع' },
-    name: { en: 'Sheikh Saad', ar: 'الشيخ سعد' },
-    role: { en: 'Quran Center Director, Egypt', ar: 'مدير مكتب تحفيظ، مصر' },
-    text: {
-      en: 'The Quran center system is outstanding — enrollment, payments, and attendance in one easy tool.',
-      ar: 'نظام مكتب التحفيظ رائع — تسجيل ودفع وحضور في أداة سهلة.'
+      en: 'I have worked with many programs, but nothing impressed me like the sales program Engineer Mustafa built for us.',
+      ar: 'أنا اشتغلت على برامج كتير، مفيش حاجة عجبتني قد ما عجبني برنامج المبيعات اللي عمله مهندس مصطفى.'
     }
   }
 ];
