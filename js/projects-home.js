@@ -78,10 +78,6 @@ function renderTestimonials() {
         ? `<img src="${encodeAssetPath(item.photo)}" alt="${name}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)">`
         : `<div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-l));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;color:var(--navy)">${item.initials ? escHtml(t(item.initials)) : name.charAt(0)}</div>`;
 
-      const projectLink = item.projectId
-        ? `<a href="project.html#${item.projectId}" style="font-size:.72rem;color:var(--gold);text-decoration:none;margin-top:.35rem;display:inline-flex;align-items:center;gap:.35rem"><i class="fa fa-folder-open"></i> <span data-en="Related project" data-ar="المشروع المرتبط">Related project</span></a>`
-        : '';
-
       if (item.featured && item.photo) {
         return `
         <div class="tcard tcard--featured">
@@ -92,7 +88,6 @@ function renderTestimonials() {
               <p style="font-size:1rem;color:#e8eef5;line-height:2;margin-bottom:1rem">${text}</p>
               <div style="font-weight:700;font-size:1rem;color:#fff">${name}</div>
               <div style="font-size:.8rem;color:var(--muted);margin-bottom:.25rem">${role}</div>
-              ${projectLink}
             </div>
           </div>
         </div>`;
@@ -107,7 +102,6 @@ function renderTestimonials() {
           <div>
             <div style="font-weight:700;font-size:.9rem;color:#fff">${name}</div>
             <div style="font-size:.75rem;color:var(--muted)">${role}</div>
-            ${projectLink}
           </div>
         </div>
       </div>`;
